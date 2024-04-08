@@ -1,0 +1,16 @@
+name: Build and deploy cicd pipeline entry for demo 1&2 repos
+on:
+  push:
+    branches: master
+jobs:
+  work_and_call_other:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First pipeline stage
+      - run: echo "doing some work on repo demo2"
+      - name: Second pipeline stage
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.build_pipeline_token }}
+          repository: Maester-Khris/deom-repo
+          event-type: trigger-release
