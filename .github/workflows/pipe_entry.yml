@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: First pipeline stage
-      - run: echo "doing some work on repo demo2"
+        uses: actions/checkout@v2
+      - name: First repo build 
+        run: echo "doing some work on repo demo2"
       - name: Second pipeline stage
         uses: peter-evans/repository-dispatch@v3
         with:
